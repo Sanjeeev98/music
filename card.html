@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Music Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #audio-player {
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3c72cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Offline Music Player</h1>
+
+    <div id="audio-player">
+        <audio controls id="music-player">
+            <source src="./audio/music1.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+         <audio controls id="music-player">
+            <source src="./audio/music2.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div id="controls">
+        <button onclick="playPause()">Play/Pause</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="volumeUp()">Volume Up</button>
+        <button onclick="volumeDown()">Volume Down</button>
+    </div>
+
+    <script>
+        var audio = document.getElementById('music-player');
+
+        function playPause() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function stop() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        function volumeUp() {
+            if (audio.volume < 1.0) {
+                audio.volume += 0.1;
+            }
+        }
+
+        function volumeDown() {
+            if (audio.volume > 0.0) {
+                audio.volume -= 0.1;
+            }
+        }
+    </script>
+</body>
+</html>
